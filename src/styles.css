@@ -1,6 +1,17 @@
-.page {
-    font-size: 20px;
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    user-select: none;
 }
-.page img {
-    height: 40px;
+
+.app img {
+    height: 120px;
+}
+
+.app p {
+    font-size: 30px;
+    font-family: sans-serif;
 }

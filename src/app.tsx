@@ -30,8 +30,8 @@ function getFaviconElement() {
 document.addEventListener("DOMContentLoaded", function() {
     getFaviconElement().href = LogoUrl
     const root = createRoot(getAppContainer())
-    root.render(<div className="page">
+    root.render(<div className="app">
         <img src={LogoUrl} alt="Logo" />
-        <p>ReactJs</p>
+        <p>React Sample App</p>
     </div>)
 });
