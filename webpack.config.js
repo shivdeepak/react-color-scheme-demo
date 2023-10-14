@@ -15,7 +15,7 @@ module.exports = {
     rules: [
         {test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/},
         {test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource', exclude: /node_modules/},
-        {test: /\.css$/, use: ['style-loader', 'css-loader',
+        {test: /\.css$/, use: ['style-loader', 'css-loader', 'postcss-loader',
           {
             loader: 'postcss-loader',
             options: {
