@@ -62,18 +62,20 @@ a.calendar:before {
 .color-scheme-card {
     background-color: var(--overlay-color);
     cursor: pointer;
-    width: 6em;
     border-radius: 8px;
     padding: 1em;
     text-align: center;
     position: absolute;
     top: 32px;
     right: 32px;
+    white-space: nowrap;
+    user-select: none;
 }
 
 .color-scheme-card .label {
     font-size: 0.8em;
     margin-top: 0.5em;
+    width: 5em;
 }
 
 .color-scheme-card .icon {
