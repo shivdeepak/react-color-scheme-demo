@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+var IconfontWebpackPlugin = require('iconfont-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -13,8 +14,23 @@ module.exports = {
   module: {
     rules: [
         {test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/},
-        {test: /\.css$/i, use: ["style-loader", "css-loader"], exclude: /node_modules/},
-        {test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource', exclude: /node_modules/}
+        {test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource', exclude: /node_modules/},
+        {test: /\.css$/, use: ['style-loader', 'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: (loader) => {
+                return {
+                  plugins: [
+                    new IconfontWebpackPlugin({
+                      resolve: loader.resolve
+                    })
+                  ]
+                };
+              }
+            }
+          }
+        ]}
     ]
   },
   resolve: {

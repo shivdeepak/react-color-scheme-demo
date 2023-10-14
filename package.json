@@ -19,6 +19,8 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-webpack-plugin": "^4.0.1",
     "html-webpack-plugin": "^5.5.3",
+    "iconfont-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^7.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "source-map-loader": "^4.0.1",
