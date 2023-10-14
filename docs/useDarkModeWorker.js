@@ -1,0 +1,1 @@
+(()=>{"use strict";const s=[];onconnect=function(t){const n=t.ports[0];s.push(n),n.onmessage=function(t){if("closing"==t.data.command){const t=s.indexOf(n);-1!==t&&s.splice(t,1)}else s.forEach((n=>n.postMessage(Object.assign(Object.assign({},t.data),{ports:s.length}))))},n.start()}})();
