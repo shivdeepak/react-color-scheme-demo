@@ -10,27 +10,33 @@ export default function useDarkMode() {
   const enabled = darkMode ?? prefersDarkMode
   const source = (darkMode == undefined) ? "system" : "user"
 
-  const worker = useMemo(() => new SharedWorker('useDarkModeWorker.js'), []);
+  const worker = useMemo(() => {
+      return (typeof SharedWorker !== "undefined") ? new SharedWorker('useDarkModeWorker.js') : undefined
+    },
+  []);
+
   const tabId = useMemo(() => Math.random(), []);
 
-  worker.port.onmessage = function(event) {
-    if (tabId == event.data.tabId || event.data.command == 'closing') return
-    debounce(() => document.body.classList.toggle("dark-mode", event.data.enabled), 300)();
-    if (event.data.source == "system") {
-        useSystemScheme()
-    } else {
-        setDarkMode(event.data.enabled)
-    }
-  };
+  if (worker !== undefined) {
+    worker.port.onmessage = function(event) {
+        if (tabId == event.data.tabId || event.data.command == 'closing') return
+        debounce(() => document.body.classList.toggle("dark-mode", event.data.enabled), 300)();
+        if (event.data.source == "system") {
+            useSystemScheme()
+        } else {
+            setDarkMode(event.data.enabled)
+        }
+    };
+  }
 
-  worker.port.start();
+  worker?.port.start();
+
+  useEventListener("beforeunload", () => {worker?.port.postMessage({command:'closing'})})
 
   useEffect(() => {
     document.body.classList.toggle("dark-mode", enabled)
-    worker.port.postMessage({enabled, source, tabId});
+    worker?.port.postMessage({enabled, source, tabId});
   }, [enabled, source])
-
-  useEventListener("beforeunload", () => {worker.port.postMessage({command:'closing'})})
 
   return [enabled, source, setDarkMode, useSystemScheme]
 }
