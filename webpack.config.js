@@ -6,6 +6,7 @@ const path = require('path');
 module.exports = {
   entry: {
     index: './src/index.tsx',
+    useDarkModeWorker: './src/hooks/useDarkModeWorker.ts'
   },
   output: {
     filename: '[name].js',
@@ -37,8 +38,11 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js']
   },
   plugins: [
-    new HtmlWebpackPlugin({title: "React App"}),
-    new ESLintPlugin({extensions: ['js', 'jsx', 'ts', 'tsx']})
+    new HtmlWebpackPlugin({
+      title: "Dark Mode Controller",
+      chunks: ['index'],
+    }),
+    new ESLintPlugin({extensions: ['js', 'jsx', 'ts', 'tsx']}),
   ],
   devServer: {
     static: {
