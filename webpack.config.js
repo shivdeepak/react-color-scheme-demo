@@ -3,9 +3,11 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './src/app.tsx',
+  entry: {
+    index: './src/index.tsx',
+  },
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {

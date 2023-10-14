@@ -1,6 +1,8 @@
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 import LogoUrl from './images/logo.svg'
+import App from './App'
 
 function getAppContainer() {
     let reactAppDiv = document.getElementById("react-app")
@@ -30,8 +32,5 @@ function getFaviconElement() {
 document.addEventListener("DOMContentLoaded", function() {
     getFaviconElement().href = LogoUrl
     const root = createRoot(getAppContainer())
-    root.render(<div className="app">
-        <img src={LogoUrl} alt="Logo" />
-        <p>React Sample App</p>
-    </div>)
+    root.render(<React.StrictMode><App/></React.StrictMode>)
 });
