@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
-import LogoUrl from './images/logo.svg'
+import FaviconURL from './images/fonticon/moon.svg'
 import App from './App'
 
 function getAppContainer() {
@@ -30,7 +30,7 @@ function getFaviconElement() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    getFaviconElement().href = LogoUrl
+    getFaviconElement().href = FaviconURL
     const root = createRoot(getAppContainer())
     root.render(<React.StrictMode><App/></React.StrictMode>)
 });

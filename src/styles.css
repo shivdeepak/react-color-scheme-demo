@@ -1,21 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    --background-color: #F5F5F5;
+    --foreground-color: #222222;
+    --overlay-color: #E5E5E5;
+}
+
+body.dark-mode {
+    --background-color: #59566D;
+    --foreground-color: #FFFFFF;
+    --overlay-color: #797690;
+}
+
 .app {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
     height: 100vh;
+    min-height: 800px;
     user-select: none;
-}
-
-.app img {
-    height: 120px;
-}
-
-.app p {
-    font-size: 30px;
-    font-family: sans-serif;
+    color: var(--foreground-color);
+    background-color: var(--background-color);
 }
 
 a.system:before {
     font-icon: url('./images/fonticon/system.svg');
+}
+
+a.sun:before {
+    font-icon: url('./images/fonticon/sun.svg');
+}
+
+a.moon:before {
+    font-icon: url('./images/fonticon/moon.svg');
+}
+
+a.web:before {
+    font-icon: url('./images/fonticon/web.svg');
+}
+
+a.phone:before {
+    font-icon: url('./images/fonticon/phone.svg');
+}
+
+a.email:before {
+    font-icon: url('./images/fonticon/email.svg');
+}
+
+a.calendar:before {
+    font-icon: url('./images/fonticon/calendar.svg');
+}
+
+
+.color-scheme-card {
+    background-color: var(--overlay-color);
+    cursor: pointer;
+    width: 6em;
+    border-radius: 8px;
+    padding: 1em;
+    text-align: center;
+    position: absolute;
+    top: 32px;
+    right: 32px;
+}
+
+.color-scheme-card .label {
+    font-size: 0.8em;
+    margin-top: 0.5em;
+}
+
+.color-scheme-card .icon {
+    font-size: 2em;
+}
+
+.profile-card {
+    background-color: var(--overlay-color);
+    width: 20em;
+    border-radius: 8px;
+    padding: 2em;
+    text-align: center;
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.profile-card .avatar {
+    width: 256px;
+    height: 256px;
+    border-radius: 8px;
+}
+
+.profile-card .name {
+    font-size: 2em;
+    margin: 16px;
+}
+
+.profile-card .role {
+    font-size: 1.2em;
+    margin: 16px;
+}
+
+.profile-card .company {
+    font-size: 1.2em;
+    margin: 16px;
+}
+
+.profile-card .icon {
+    font-size: 1.5em;
+    text-decoration: none;
+    padding: 16px 16px 0px 16px;
+    color: var(--foreground-color);
+    display: inline-block;
 }
